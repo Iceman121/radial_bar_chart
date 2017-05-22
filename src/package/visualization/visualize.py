@@ -1,7 +1,13 @@
+# ==============================================================================
+# Importing Modules
+# ==============================================================================
 from bokeh.plotting import figure, show
 from ..global_variables import global_var
 import numpy as np
 
+# ==============================================================================
+# Importing Global Variables
+# ==============================================================================
 width = global_var.width
 height = global_var.width
 df = global_var.df
@@ -13,7 +19,9 @@ inner_radius = global_var.inner_radius
 outer_radius = global_var.outer_radius
 
 
+# Function for call
 def plot_radial_chart():
+    # Figure level arguments
     p = figure(plot_width=width, plot_height=height, title="",
                x_axis_type=None, y_axis_type=None,
                x_range=(-420, 420), y_range=(-420, 420),
@@ -21,10 +29,11 @@ def plot_radial_chart():
                background_fill_color="#f0e1d2", border_fill_color="#f0e1d2",
                toolbar_sticky=False)
 
+    # Grid Line Colors
     p.xgrid.grid_line_color = None
     p.ygrid.grid_line_color = None
 
-    # annular wedges
+    # Classifier Wedges
     angles = np.pi/2 - big_angle/2 - df.index.to_series()*big_angle
     colors = [gram_color[gram] for gram in df.gram]
     p.annular_wedge(0, 0,
@@ -34,7 +43,7 @@ def plot_radial_chart():
                     angles,
                     color=colors,)
 
-    # small wedges
+    # Individual Bars
     p.annular_wedge(0, 0, inner_radius, global_var.rad(df.penicillin),
                     -big_angle+angles+5*small_angle,
                     -big_angle+angles+6*small_angle,
@@ -48,22 +57,22 @@ def plot_radial_chart():
                     -big_angle+angles+2*small_angle,
                     color=drug_color['Neomycin'])
 
-    # circular axes and lables
+    # Circular Axes and Lables
     labels = np.power(10.0, np.arange(-3, 4))
     radii = global_var.rad(labels)
     p.circle(0, 0, radius=radii, fill_color=None, line_color="white")
     p.text(0, radii[:-1], [str(r) for r in labels[:-1]],
            text_font_size="8pt", text_align="center", text_baseline="middle")
 
-    # radial axes
+    # Radial Axes
     p.annular_wedge(0, 0, inner_radius-10, outer_radius+10,
                     -big_angle+angles, -big_angle+angles, color="black")
 
-    # bacteria labels
+    # Bacteria Labels
     xr = radii[0]*np.cos(np.array(-big_angle/2 + angles))
     yr = radii[0]*np.sin(np.array(-big_angle/2 + angles))
     label_angle = np.array(-big_angle/2+angles)
-    # easier to read labels on the left side
+    # Easier to read labels on the left side
     label_angle[label_angle < -np.pi/2] += np.pi
     p.text(xr, yr, df.bacteria, angle=label_angle,
            text_font_size="9pt", text_align="center", text_baseline="middle")
@@ -80,5 +89,5 @@ def plot_radial_chart():
            color=list(drug_color.values()))
     p.text([-15, -15, -15], [18, 0, -18], text=list(drug_color),
            text_font_size="9pt", text_align="left", text_baseline="middle")
-    
+
     show(p)
