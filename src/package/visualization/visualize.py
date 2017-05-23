@@ -17,6 +17,8 @@ gram_color = global_var.gram_colors
 drug_color = global_var.drug_colors
 inner_radius = global_var.inner_radius
 outer_radius = global_var.outer_radius
+bckcol = global_var.bckcol
+lincol = global_var.lincol
 
 
 # Function for call
@@ -26,7 +28,7 @@ def plot_radial_chart():
                x_axis_type=None, y_axis_type=None,
                x_range=(-420, 420), y_range=(-420, 420),
                min_border=0, outline_line_color="black",
-               background_fill_color="#f0e1d2", border_fill_color="#f0e1d2",
+               background_fill_color=bckcol, border_fill_color=bckcol,
                toolbar_sticky=False)
 
     # Grid Line Colors
@@ -60,7 +62,7 @@ def plot_radial_chart():
     # Circular Axes and Lables
     labels = np.power(10.0, np.arange(-3, 4))
     radii = global_var.rad(labels)
-    p.circle(0, 0, radius=radii, fill_color=None, line_color="white")
+    p.circle(0, 0, radius=radii, fill_color=None, line_color=lincol)
     p.text(0, radii[:-1], [str(r) for r in labels[:-1]],
            text_font_size="8pt", text_align="center", text_baseline="middle")
 

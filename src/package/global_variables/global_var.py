@@ -16,6 +16,19 @@ gram_colors = user_input.import_gram_colors()
 drug_colors = user_input.import_drug_colors()
 df = user_input.import_data()
 
+# Colors
+theme = int(input("Dark(1)/Light(0) theme? : "))
+if theme == 0:
+    bckcol = "#f0e1d2"
+    lincol = 'white'
+elif theme == 1:
+    bckcol = "#49626e"
+    lincol = 'black'
+else:
+    print("Invalid entry, selecting dark theme...")
+    bckcol = "#49626e"
+    lincol = 'black'
+
 # ==============================================================================
 # Defining Radii
 # ==============================================================================
