@@ -19,6 +19,7 @@ inner_radius = global_var.inner_radius
 outer_radius = global_var.outer_radius
 bckcol = global_var.bckcol
 lincol = global_var.lincol
+textcol = global_var.textcol
 
 
 # Function for call
@@ -64,7 +65,8 @@ def plot_radial_chart():
     radii = global_var.rad(labels)
     p.circle(0, 0, radius=radii, fill_color=None, line_color=lincol)
     p.text(0, radii[:-1], [str(r) for r in labels[:-1]],
-           text_font_size="8pt", text_align="center", text_baseline="middle")
+           text_font_size="8pt", text_align="center", text_baseline="middle",
+           text_color=textcol)
 
     # Radial Axes
     p.annular_wedge(0, 0, inner_radius-10, outer_radius+10,
@@ -77,7 +79,8 @@ def plot_radial_chart():
     # Easier to read labels on the left side
     label_angle[label_angle < -np.pi/2] += np.pi
     p.text(xr, yr, df.bacteria, angle=label_angle,
-           text_font_size="9pt", text_align="center", text_baseline="middle")
+           text_font_size="9pt", text_align="center", text_baseline="middle",
+           text_color=textcol)
 
     # OK, these hand drawn legends are pretty clunky,
     # will be improved in future release
@@ -85,11 +88,13 @@ def plot_radial_chart():
              color=list(gram_color.values()), radius=5)
     p.text([-30, -30], [-370, -390],
            text=["Gram-" + gr for gr in gram_color.keys()],
-           text_font_size="7pt", text_align="left", text_baseline="middle")
+           text_font_size="7pt", text_align="left", text_baseline="middle",
+           text_color=textcol)
 
     p.rect([-40, -40, -40], [18, 0, -18], width=30, height=13,
            color=list(drug_color.values()))
     p.text([-15, -15, -15], [18, 0, -18], text=list(drug_color),
-           text_font_size="9pt", text_align="left", text_baseline="middle")
+           text_font_size="9pt", text_align="left", text_baseline="middle",
+           text_color=textcol)
 
     show(p)
