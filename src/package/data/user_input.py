@@ -3,8 +3,6 @@
 # ==============================================================================
 # For storing bar chart data
 import pandas as po
-# For gram and drug colors
-import json
 # For path details
 import os
 
@@ -41,19 +39,3 @@ def import_data():
     print(data.head())
     print()
     return data
-
-
-# Import Gram Color Data
-def import_gram_colors():
-    print("Importing Gram Color settings...")
-    with open(path+'/data/external/gram_color.json') as gram_file:
-        gram_colors = json.load(gram_file)
-    return gram_colors
-
-
-# Import Drug Color Data
-def import_drug_colors():
-    print("Importing Drug Color settings...")
-    with open(path+'/data/external/drug_color.json') as drug_file:
-        drug_colors = json.load(drug_file)
-    return drug_colors

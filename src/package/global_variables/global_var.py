@@ -12,41 +12,41 @@ width = 800
 height = 800
 
 # Data to be used in the graph
-gram_colors = {}
-drug_colors = {}
+section_colors = {}
+wedge_colors = {}
 df = user_input.import_data()
 
 # Colors
-theme = int(input("Dark(1)/Light(0) theme? : "))
+theme = int(input("Light(0)/Dark(1) theme? : "))
 if theme == 0:
     bckcol = "#f0e1d2"
     lincol = '#ffffff'
-    gram_colors['positive'] = "#aeaeb8"
-    gram_colors['negative'] = "#e69584"
-    drug_colors['Penicillin'] = '#0d3362'
-    drug_colors['Streptomycin'] = '#c64737'
-    drug_colors['Neomycin'] = '#000000'
+    section_colors[1] = "#aeaeb8"
+    section_colors[2] = "#e69584"
+    wedge_colors[1] = '#0d3362'
+    wedge_colors[2] = '#c64737'
+    wedge_colors[3] = '#000000'
     textcol = '#000000'
 
 elif theme == 1:
     bckcol = "#000000"
     lincol = '#657a84'
-    gram_colors['positive'] = "#a92f41"
-    gram_colors['negative'] = "#b48375"
-    drug_colors['Penicillin'] = '#e5d5c5'
-    drug_colors['Streptomycin'] = '#91c7a9'
-    drug_colors['Neomycin'] = '#3f3f3f'
+    section_colors[1] = "#a92f41"
+    section_colors[2] = "#b48375"
+    wedge_colors[1] = '#e5d5c5'
+    wedge_colors[2] = '#91c7a9'
+    wedge_colors[3] = '#3f3f3f'
     textcol = '#ffffff'
 
 else:
     print("Invalid entry, selecting dark theme...")
     bckcol = "#000000"
     lincol = '#657a84'
-    gram_colors['positive'] = "#a92f41"
-    gram_colors['negative'] = "#b48375"
-    drug_colors['Penicillin'] = '#e5d5c5'
-    drug_colors['Streptomycin'] = '#91c7a9'
-    drug_colors['Neomycin'] = '#3f3f3f'
+    section_colors[1] = "#a92f41"
+    section_colors[2] = "#b48375"
+    wedge_colors[1] = '#e5d5c5'
+    wedge_colors[2] = '#91c7a9'
+    wedge_colors[3] = '#3f3f3f'
     textcol = '#ffffff'
 
 # ==============================================================================
