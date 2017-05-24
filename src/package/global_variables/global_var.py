@@ -40,14 +40,14 @@ elif theme == 1:
 
 else:
     print("Invalid entry, selecting dark theme...")
-    bckcol = "#49626e"
+    bckcol = "#000000"
     lincol = '#657a84'
-    gram_colors['positive'] = "#81894d"
-    gram_colors['negative'] = "#846889"
-    drug_colors['Penicillin'] = '#a28fa6'
-    drug_colors['Streptomycin'] = '#f2f6d4'
-    drug_colors['Neomycin'] = '#ffffff'
-    textcol = '#fcecd9'
+    gram_colors['positive'] = "#a92f41"
+    gram_colors['negative'] = "#b48375"
+    drug_colors['Penicillin'] = '#e5d5c5'
+    drug_colors['Streptomycin'] = '#91c7a9'
+    drug_colors['Neomycin'] = '#3f3f3f'
+    textcol = '#ffffff'
 
 # ==============================================================================
 # Defining Radii
